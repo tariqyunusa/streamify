@@ -13,8 +13,9 @@
     padding-inline: 2rem;
 }
 .logo__h1{
-    color: #1DB954;
+    color: #fff;
     font-size: 2rem;
+    text-transform: uppercase;
 }
 .Links__container{
     display: flex;
