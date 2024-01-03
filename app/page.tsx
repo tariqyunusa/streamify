@@ -16,9 +16,9 @@ export default function Home() {
         <button className="container____btn"><Image src={icon} width={25} height={25} alt="spotify icon" /><span className="btn___text">Proceed With Spotify</span></button>
       </div>
       <div className="right__container">
-        <div className="playlist___widget">
+        
 <SpotifyPlaylist />
-        </div>
+      
       </div>
       </section>
     </main>
