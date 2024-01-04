@@ -1,8 +1,11 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import "../styles/SpotifyPlaylist.css"
+import icon from "../public/Spotify_Icon_RGB_White.png"
+import { IoChevronForwardOutline } from "react-icons/io5"
+import Image from 'next/image';
 
-const SpotifyPlaylist: React.FC = () => {
+const SpotifyPlaylist = () => {
   interface Track{
     track:{
       name: string
@@ -76,13 +79,29 @@ const SpotifyPlaylist: React.FC = () => {
   },[tracks])
 // console.log("current track  State:", tracks);
 
-  return <div className='playlist___widget'>
+  return(
+<>
     {tracks.length > 0 && (
-  <h1>{tracks[trackIndex].track.name}</h1>
-)}
-    
-
-  </div>;
+      <div>
+        <div className="playlist___widget">
+          <div className="header___playlist__widget">
+            <div className="spotify__logo">
+              <Image src={icon} width={25} height={25} alt="spotify icon" />
+            </div>
+            <div className="chevron">
+              <IoChevronForwardOutline />
+            </div>
+          </div>
+          <div className="playlist___info">
+            <div className="playlist_____track">
+              <p>{tracks[trackIndex].track.name}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </>
+  );
 };
 
 export default SpotifyPlaylist;
