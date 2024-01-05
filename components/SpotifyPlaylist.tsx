@@ -15,6 +15,8 @@ const SpotifyPlaylist = () => {
   const [playlistId, setPlaylistId] = useState<string | null>(null);
   const [tracks, setTracks] = useState<Track[]>([]);
   const [trackIndex, setTrackIndex] = useState(0)
+  const [playlistName, setPlaylistName] = useState("")
+ 
 
   useEffect(() => {
     const CLIENT_ID = "b406d0b20a0d44ae9f9a05b5882009b6";
@@ -52,6 +54,7 @@ const SpotifyPlaylist = () => {
     const isTokenExpired = storedExpiration ? parseInt(storedExpiration) < new Date().getTime() : true;
 
     const accessToken = isTokenExpired ? getAccessToken() : storedToken;
+   
 
     if (accessToken && playlistId) {
       fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
@@ -68,6 +71,7 @@ const SpotifyPlaylist = () => {
           console.log('Error Fetching Tracks:', error);
         });
     }
+    
   }, [playlistId]);
   useEffect(()=>{
     const intervalId = setInterval(()=>{
@@ -77,6 +81,20 @@ const SpotifyPlaylist = () => {
     },5000)
     return () => clearInterval(intervalId)
   },[tracks])
+  useEffect(()=>{
+    const accessToken = getAccessToken()
+    fetch(`https://api.spotify.com/v1/playlists/${playlistId}`,{
+     headers: {
+      Authorization: `Bearer ${accessToken}`,
+     },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setPlaylistName(data.name)
+      // console.log("Playlist Name", data.name);
+      
+    })
+  },[playlistId])
 // console.log("current track  State:", tracks);
 
   return(
@@ -93,7 +111,9 @@ const SpotifyPlaylist = () => {
             </div>
           </div>
           <div className="playlist___info">
+          <h6>{playlistName}</h6>
             <div className="playlist_____track">
+              
               <p>{tracks[trackIndex].track.name}</p>
             </div>
           </div>
