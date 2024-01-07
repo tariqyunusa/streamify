@@ -15,6 +15,7 @@ const SpotifyPlaylist = () => {
   const [playlistId, setPlaylistId] = useState<string | null>(null);
   const [tracks, setTracks] = useState<Track[]>([]);
   const [trackIndex, setTrackIndex] = useState(0)
+  const [playlistName, setPlaylistName] = useState("")
 
   useEffect(() => {
     const CLIENT_ID = "b406d0b20a0d44ae9f9a05b5882009b6";
@@ -32,12 +33,12 @@ const SpotifyPlaylist = () => {
   const refreshAccessToken = async () => {
     const CLIENT_ID = "b406d0b20a0d44ae9f9a05b5882009b6";
     const CLIENT_SECRET = "6ff8d99a5adc47a6b7debc934a6ff22f";
-    const REFRESH_TOKEN = localStorage.getItem("spotifyRefreshToken"); // Use your actual method to retrieve the refresh token
+    const REFRESH_TOKEN = localStorage.getItem("spotifyRefreshToken"); 
 
     const refreshAccessToken = async () => {
       const CLIENT_ID = "b406d0b20a0d44ae9f9a05b5882009b6";
       const CLIENT_SECRET = "6ff8d99a5adc47a6b7debc934a6ff22f";
-      const REFRESH_TOKEN = localStorage.getItem("spotifyRefreshToken") ?? ''; // Default to an empty string if null
+      const REFRESH_TOKEN = localStorage.getItem("spotifyRefreshToken") ?? ''; 
     
       try {
         const response = await fetch('https://accounts.spotify.com/api/token', {
@@ -104,7 +105,7 @@ getAccessToken()
         .then((response) => response.json())
         .then((data) => {
           setTracks(data.items);
-          console.log("tracks",data.items);
+          // console.log("tracks:",data.items);
         })
         .catch((error) => {
           console.log('Error Fetching Tracks:', error);
@@ -120,6 +121,23 @@ getAccessToken()
     },5000)
     return () => clearInterval(intervalId)
   },[tracks])
+  useEffect(()=> {
+    const accessToken = localStorage.getItem("spotifyAccessToken")
+    fetch(`https://api.spotify.com/v1/playlists/${playlistId}`,{
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    })
+    .then((response => response.json()))
+    .then((data) => {
+      setPlaylistName(data.name)
+      // console.log("playlist name:",data.name);
+      
+    })
+    .catch((error) => {
+      console.error("error fetching playlist name:", error)
+    })
+  },[playlistId])
 // console.log("current track  State:", tracks);
 
   return(
@@ -136,6 +154,7 @@ getAccessToken()
             </div>
           </div>
           <div className="playlist___info">
+            <h6>{playlistName}</h6>
             <div className="playlist_____track">
               <p>{tracks[trackIndex].track.name}</p>
             </div>
