@@ -14,7 +14,7 @@ const SpotifyPlaylist = () => {
 
   const [playlistId, setPlaylistId] = useState<string | null>(null);
   const [tracks, setTracks] = useState<Track[]>([]);
-  const [trackIndex, setTrackIndex] = useState(0);
+  const [trackIndex, setTrackIndex] = useState(0)
 
   useEffect(() => {
     const CLIENT_ID = "b406d0b20a0d44ae9f9a05b5882009b6";
@@ -93,7 +93,7 @@ getAccessToken()
     const storedExpiration = localStorage.getItem("spotifyTokenExpiration");
     const isTokenExpired = storedExpiration ? parseInt(storedExpiration) < new Date().getTime() : true;
 
-    const accessToken = isTokenExpired ? refreshAccessToken() : storedToken;
+    const accessToken = isTokenExpired ? getAccessToken() : storedToken;
 
     if (accessToken && playlistId) {
       fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
@@ -110,39 +110,40 @@ getAccessToken()
           console.log('Error Fetching Tracks:', error);
         });
     }
+    
   }, [playlistId]);
+  useEffect(()=>{
+    const intervalId = setInterval(()=>{
+      setTrackIndex((prev) => 
+        prev === tracks.length - 1 ? 0 : prev + 1 
+      )
+    },5000)
+    return () => clearInterval(intervalId)
+  },[tracks])
+// console.log("current track  State:", tracks);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTrackIndex((prev) =>
-        prev === tracks?.length - 1 ? 0 : prev + 1
-      );
-    }, 5000);
-    return () => clearInterval(intervalId);
-  }, [tracks]);
-
-  return (
-    <>
-      {tracks?.length > 0 && (
-        <div>
-          <div className="playlist___widget">
-            <div className="header___playlist__widget">
-              <div className="spotify__logo">
-                <Image src={icon} width={25} height={25} alt="spotify icon" />
-              </div>
-              <div className="chevron">
-                <IoChevronForwardOutline />
-              </div>
+  return(
+<>
+    {tracks.length > 0 && (
+      <div>
+        <div className="playlist___widget">
+          <div className="header___playlist__widget">
+            <div className="spotify__logo">
+              <Image src={icon} width={25} height={25} alt="spotify icon" />
             </div>
-            <div className="playlist___info">
-              <div className="playlist_____track">
-                <p>{tracks[trackIndex].track.name}</p>
-              </div>
+            <div className="chevron">
+              <IoChevronForwardOutline />
+            </div>
+          </div>
+          <div className="playlist___info">
+            <div className="playlist_____track">
+              <p>{tracks[trackIndex].track.name}</p>
             </div>
           </div>
         </div>
-      )}
-    </>
+      </div>
+    )}
+  </>
   );
 };
 
