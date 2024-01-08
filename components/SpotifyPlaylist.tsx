@@ -9,6 +9,12 @@ const SpotifyPlaylist = () => {
   interface Track {
     track: {
       name: string;
+      id: string;
+      artists: {
+        id: string;
+        name: string;
+        images: { url: string }[];
+      }[];
     };
   }
 
@@ -16,6 +22,7 @@ const SpotifyPlaylist = () => {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [trackIndex, setTrackIndex] = useState(0)
   const [playlistName, setPlaylistName] = useState("")
+  const [artist, setArtist] = useState()
 
   useEffect(() => {
     const CLIENT_ID = "b406d0b20a0d44ae9f9a05b5882009b6";
@@ -105,7 +112,7 @@ getAccessToken()
         .then((response) => response.json())
         .then((data) => {
           setTracks(data.items);
-          // console.log("tracks:",data.items);
+          console.log("tracks:",data.items);
         })
         .catch((error) => {
           console.log('Error Fetching Tracks:', error);
@@ -121,6 +128,23 @@ getAccessToken()
     },5000)
     return () => clearInterval(intervalId)
   },[tracks])
+  useEffect(()=> {
+    const accessToken = localStorage.getItem("spotifyAccessToken")
+    const artistId = tracks[trackIndex]?.track.artists[0]?.id
+    fetch(`https://api.spotify.com/v1/artists/${artistId}`,{
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setArtist(data)
+      console.log("artist data:", data);
+    })
+    .catch((error)=> {
+      console.error("error fetching artist information:", error)
+    })
+  },[trackIndex, tracks])
   useEffect(()=> {
     const accessToken = localStorage.getItem("spotifyAccessToken")
     fetch(`https://api.spotify.com/v1/playlists/${playlistId}`,{
@@ -142,26 +166,31 @@ getAccessToken()
 
   return(
 <>
-    {tracks.length > 0 && (
-      <div>
-        <div className="playlist___widget">
-          <div className="header___playlist__widget">
-            <div className="spotify__logo">
-              <Image src={icon} width={25} height={25} alt="spotify icon" />
-            </div>
-            <div className="chevron">
-              <IoChevronForwardOutline />
-            </div>
-          </div>
-          <div className="playlist___info">
-            <h6>{playlistName}</h6>
-            <div className="playlist_____track">
-              <p>{tracks[trackIndex].track.name}</p>
-            </div>
-          </div>
+{tracks.length > 0 && (
+  <div>
+    <div className="playlist___widget">
+    <Image src={(artist as any)?.images?.[0]?.url || ''} alt="artist" fill={true} />
+
+
+
+      <div className="header___playlist__widget">
+        <div className="spotify__logo">
+          <Image src={icon} width={25} height={25} alt="spotify icon" />
+        </div>
+        <div className="chevron">
+          <IoChevronForwardOutline />
         </div>
       </div>
-    )}
+      <div className="playlist___info">
+        <h4 className="playlist___info_header">{playlistName}</h4>
+        <div className="playlist_____track">
+          <p>{tracks[trackIndex]?.track?.name}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
   </>
   );
 };
