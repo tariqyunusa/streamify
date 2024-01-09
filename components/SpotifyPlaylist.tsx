@@ -169,10 +169,7 @@ getAccessToken()
 {tracks.length > 0 && (
   <div>
     <div className="playlist___widget">
-    <Image src={(artist as any)?.images?.[0]?.url || ''} alt="artist" fill={true} />
-
-
-
+    <Image src={(artist as any)?.images?.[0]?.url || ''} alt="artist" fill={true} className='artist__image' />
       <div className="header___playlist__widget">
         <div className="spotify__logo">
           <Image src={icon} width={25} height={25} alt="spotify icon" />
