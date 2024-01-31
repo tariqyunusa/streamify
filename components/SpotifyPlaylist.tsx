@@ -31,7 +31,7 @@ const SpotifyPlaylist = () => {
 
   useEffect(() => {
     const CLIENT_ID = 'b406d0b20a0d44ae9f9a05b5882009b6';
-    const REDIRECT_URI = 'http://localhost:3000/';
+    const REDIRECT_URI = 'https://streamify-pi.vercel.app/';
     const TARGET_PLAYLIST_ID = '5FAn5H9fbeLr5ibE4vRCHC';
     const auth_url = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token&scope=user-top-read`;
 
