@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Nav_container{
+    width: 100vw;
+    height: 10vh;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+}
+.logo__h1{
+    color: #fff;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.Links__container{
+    display: flex;
+    gap: 1rem;
+}
+.Links___Link{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 1s all ease;
+}
+.Links___Link:hover{
+    color: #1DB954;   
+}
+@media only screen and (max-width:430px){
+    .logo__h1{
+        font-size: 1.5rem;
+    }
+    .Links___Link{
+        font-size: .75rem;
+    }
+}

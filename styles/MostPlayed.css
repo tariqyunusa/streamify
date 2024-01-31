@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    background-color: #111111;
+    font-family: Work Sans;
+}
+.most_listened{
+    width: 200vw;
+    height: 90vh;
+    padding: .5rem 2rem .5rem 1rem;
+    /* align-items: center; */
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    position: relative;
+}
+.navigation{
+    width: 100vw;
+    /* height: 10%; */
+    position: fixed;
+    display: flex;
+    /* justify-content: center; */
+    margin: 1rem 3.5rem; 
+}
+.user_behaviour{
+    width: 100%;
+    height: 95%;
+    padding: 2rem;
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    top: 6rem;
+    align-items: center;
+}
+
+.icon{
+    width: 75px;
+    height: 75px;
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 2.5rem;
+    background: linear-gradient(233deg, rgba(226, 205, 11, 0.20) 11.06%, rgba(208, 191, 35, 0.00) 100%), linear-gradient(141deg, #33FF7A 25.45%, rgba(51, 255, 122, 0.00) 77.74%);
+}
+.info__intro{
+    width: 30vw;
+    height: 50vh;
+    padding: .5rem;
+    position: relative;
+    top: -2rem;
+}
+.info__details{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* padding: 0 .5rem; */
+    margin: 2rem 0 ;
+}
+.artist_conatainer{
+    margin-top: 1rem;
+}
+.info__details_h1{
+    font-size: 4rem;
+    color: #fff;
+}
+.info__details_h2{
+    color: #33FF7A;
+    font-size: 4rem;
+}
+.info__details_span{
+    color: #c4c4c4;
+}
+.artist__container_auto{
+    width: 50%;
+    height: 100%;
+    /* background-color: red; */
+    padding: 1rem;
+    gap: 2rem;
+    display: flex;
+}
+.first_artist {
+    position: relative;
+    top: 4rem;
+    width: 16rem;
+    height: 20rem;
+    margin: 1rem;
+}
+.second_artist{
+    position: relative;
+    top: 2rem;
+    /* left: 2rem; */
+    width: 12rem;
+    height: 12rem;
+    margin: 1rem;
+}
+.third_artist{
+    position: relative;
+    margin: 1rem;
+    top: 20rem;
+    width: 12rem;
+    height: 12rem;
+}
+.fourth_artist{
+    position: relative;
+    margin: 1rem;
+    top:10rem ;
+    width: 12rem;
+    height: 12rem;
+}
+.fifth_artist{
+    position: relative;
+    top: 4rem;
+    width: 12rem;
+    height: 12rem;
+    margin: 1rem;
+}
+.artist_img{
+    border-radius: 5px;
+    cursor: pointer;
+}

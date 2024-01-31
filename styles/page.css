@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body__container{
+    width: 100vw;
+    height: 90vh;
+    display: flex; 
+    align-items: center;  
+}
+.left__container{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-items: flex-start;
+    margin-inline: 1.5rem;
+    gap: 1.5rem;
+}
+.left__container_h3{
+    font-size: 4rem;
+    color:#fff;
+}
+.span_container{
+    color: #1DB954;
+}
+.container____btn{
+    background-color: #1DB954;
+    color: white;
+    outline: none;
+    border: none;
+    width: 230px;
+    height: 60px;
+    border-radius: 5px;
+    /* font-size: 1.1rem; */
+    font-family: Work Sans ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; 
+}
+.btn___text{
+    font-size: 1.1rem;
+    margin-left: .5rem ;
+    font-weight: 400;
+}
+.right__container{
+    width: 50%;
+    height: 50%; 
+}
+.info__playlist{
+    align-self: flex-end;
+    justify-self: flex-end;
+  padding-right: 1rem;
+}
+.info__playlist .information{
+    color: #fff;
+}
