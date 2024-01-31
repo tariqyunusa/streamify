@@ -79,19 +79,28 @@ const SpotifyPlaylist = () => {
   };
 
   const getAccessToken = () => {
-    const hash = window.location.hash.substring(1);
-    const params = new URLSearchParams(hash);
-    const accessToken = params.get('access_token');
-    const expiresIn = params.get('expires_in');
-
-    if (accessToken && expiresIn) {
-      const expirationTime = new Date().getTime() + parseInt(expiresIn) * 1000;
+    if(typeof window !== 'undefined') {
+      const hash = window.location.hash.substring(1)
+      const params = new URLSearchParams(hash)
+      const accessToken = params.get("access_token")
+      const expiresIn = params.get('expires_in')
+      if(accessToken !== null && expiresIn !== null) {
+        const expirationTime = new Date().getTime() + parseInt(expiresIn) * 1000;
       localStorage.setItem('spotifyAccessToken', accessToken);
       localStorage.setItem('spotifyTokenExpiration', expirationTime.toString());
       localStorage.setItem('spotifyRefreshToken', params.get('refresh_token') || '');
-
-      return accessToken;
+      }
+      else{
+        console.error("Access Token or Expires value is null")
+      }
+      return accessToken
+    }else{
+      console.error("window is not defined")
     }
+
+    
+      
+    
 
     return null;
   };

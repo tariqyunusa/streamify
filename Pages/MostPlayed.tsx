@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react'
 import Nav from '@/components/Nav'
 import "../styles/MostPlayed.css"
@@ -62,20 +63,20 @@ const MostPlayed = () => {
             console.error("error fetching user's favorite artist", error)
         })
     },[])
+   
     const username = user
     
+   
     
-   if(artist && artist.length > 0){
-     favArtist = [artist[0]]
+    if(artist && artist.length > 0){
+        favArtist = [artist[0]]
         secondArtist = [artist[1]]
         thirdArtist = [artist[2]]
         fourthArtist = [artist[3]]
         fifthArtist = [artist[4]]
-    // console.log("Your favourite artist is:", favArtist[0]);
-   console.log(secondArtist, thirdArtist, fourthArtist, fifthArtist);
-   
-    
-   }
+       // console.log("Your favourite artist is:", favArtist[0]);
+      console.log(secondArtist, thirdArtist, fourthArtist, fifthArtist);  
+    }
  
    
    
