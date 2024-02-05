@@ -46,6 +46,7 @@
 .right__side_nav{
     display: flex;
     gap: .5rem;
+    align-items: center;
 }
 .username{
     color: #fff;

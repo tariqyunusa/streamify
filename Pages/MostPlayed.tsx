@@ -5,6 +5,7 @@ import "../styles/MostPlayed.css"
 import SecondNav from '@/components/SecondNav'
 import Image from 'next/image'
 import { FaHeadphones } from "react-icons/fa";
+import Tracks from '@/components/Tracks'
 // import Tracks from '@/components/tracks'
 
 interface SpotifyArtist {
@@ -106,24 +107,25 @@ const MostPlayed = () => {
         </div>
         {favArtist && favArtist.length > 0 ? <Image className='first_artist artist_img' src={favArtist[0].images[0].url} fill={true} alt={favArtist[0].name}/> : ""}</div>
         <div className="second_artist artist">
-       <div className="info_artist"><span>#2</span><h3>{secondArtist[0].name}</h3></div>
-            {secondArtist && secondArtist.length > 0 ? <Image className='artist_img' fill={true} src={secondArtist[0].images[0].url} alt={secondArtist[0].name} />: "" }
+       
+            {secondArtist && secondArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#2</span><h3>{secondArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={secondArtist[0].images[0].url} alt={secondArtist[0].name} /></div> : "" }
         </div>
         <div className="third_artist artist">
-        <div className="info_artist"><span>#3</span><h3>{thirdArtist[0].name}</h3></div>
-            {thirdArtist && thirdArtist.length >0 ? <Image className='artist_img' fill={true} src={thirdArtist[0].images[0].url} alt={thirdArtist[0].name}/>: ""}
+        {/* <div className="info_artist"><span>#3</span><h3>{thirdArtist[0].name}</h3></div> */}
+            {thirdArtist && thirdArtist.length >0 ? <div className="card"><div className="info_artist"><span>#3</span><h3>{thirdArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={thirdArtist[0].images[0].url} alt={thirdArtist[0].name} /></div>: ""}
         </div>
         <div className="fourth_artist artist">
-        <div className="info_artist"><span>#4</span><h3>{fourthArtist[0].name}</h3></div>
-            {fourthArtist && fourthArtist.length > 0 ? <Image className='artist_img' src={fourthArtist[0].images[0].url} fill={true} alt={fourthArtist[0].name}/> : ""} 
+        {/* <div className="info_artist"><span>#4</span><h3>{fourthArtist[0].name}</h3></div> */}
+            {fourthArtist && fourthArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#4</span><h3>{fourthArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={fourthArtist[0].images[0].url} alt={fourthArtist[0].name} /></div> : ""} 
         </div>
         <div className="fifth_artist artist">
-        <div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div>
-            {fifthArtist && fifthArtist.length > 0 ? <Image className='artist_img' src={fifthArtist[0].images[0].url} fill={true} alt={fifthArtist[0].name}/> : ""}
+        {/* <div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div> */}
+            {fifthArtist && fifthArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={fifthArtist[0].images[0].url} alt={fifthArtist[0].name} /></div> : ""}
         </div>
        </div>
         {/* <Tracks /> */}
     </main>
+    
    </section>
   )
 }
