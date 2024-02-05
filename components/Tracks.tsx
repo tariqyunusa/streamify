@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
+import gsap from 'gsap'
 
 const Tracks = () => {
     useEffect(() => {
@@ -14,6 +15,7 @@ const Tracks = () => {
             
         })
     },[])
+   
   return (
     <div>
       

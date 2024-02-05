@@ -126,6 +126,7 @@ html,body{
     border-radius: 5px;
     cursor: pointer;
     filter: brightness(90%);
+    /* clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); */
 }
 .artist_about{
     position: absolute;
