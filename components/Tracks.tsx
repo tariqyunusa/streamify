@@ -7,7 +7,8 @@ const Tracks = () => {
         const accessToken = localStorage.getItem('spotifyAccessToken')
         fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term', {
             headers: {
-                Authoriaton : `Bearer ${accessToken}`
+                Authorization: `Bearer ${accessToken}`
+
             }
         }).then(resp => resp.json())
         .then((resp : any) => {
