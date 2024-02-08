@@ -51,7 +51,7 @@ html,body{
     background: linear-gradient(233deg, rgba(226, 205, 11, 0.20) 11.06%, rgba(208, 191, 35, 0.00) 100%), linear-gradient(141deg, #33FF7A 25.45%, rgba(51, 255, 122, 0.00) 77.74%);
 }
 .info__intro{
-    width: 30vw;
+    width: 40vw;
     height: 50vh;
     padding: .5rem;
     position: relative;

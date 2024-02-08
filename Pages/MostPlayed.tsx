@@ -182,9 +182,11 @@ const MostPlayed = () => {
         {/* <div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div> */}
             {fifthArtist && fifthArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={fifthArtist[0].images[0].url} alt={fifthArtist[0].name} /></div> : ""}
         </div>
+        
        </div>
+       <Tracks/>
     </main>
-    <Tracks/>
+    
    </section>
   )
 }
