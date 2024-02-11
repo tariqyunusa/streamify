@@ -4,16 +4,74 @@
     box-sizing: border-box;
 }
 .tracks_section{
-    width: 100vw;
+    width: 200vw;
     display: flex;
     height: 100vh;
     align-items: center;
+    margin-inline-start: 4rem ;
 }
 .img_track{
-    width: 16rem;
+    width: 20rem;
     height: 20rem;
     position: relative;
+    margin: 1rem;
+    top: -5rem;
+
 }
 .fav_track{
     display: flex;
+    gap: 1rem;
+}
+.info_section{
+    position: relative;
+    top: -5rem;
+    padding-right: 1rem;
+}
+.img__track{
+    border-radius: 5px;
+}.first_track{
+    display: flex;
+    gap: .5rem;
+
+
+    padding-right: 1rem;
+}
+.position{
+    color: #fff;
+    position: relative;
+    top: -3.5rem;
+    opacity: 50%;
+}
+.second_track{
+    display: flex;
+    gap: .5rem;
+    position: relative;
+    top: 10rem;
+}
+.img_track_all{
+    width: 17rem;
+    height: 17rem;
+    position: relative;
+}
+.third_track{
+    display: flex;
+    gap: .5rem;
+    position: relative;
+    top: -7rem;
+}
+.fourth_track{
+    display: flex;
+    gap: .5rem;
+    position: relative;
+    top: 7rem;
+}
+.fifth_track{
+    display: flex;
+    gap: .5rem;
+    position: relative;
+    top: -7rem;
+}
+.pos{
+    color: #fff;
+    opacity: 50%;
 }

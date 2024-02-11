@@ -10,11 +10,11 @@ interface Track{
 }
 const Tracks = () => {
     const [tracks, setTracks] = useState<any>([])
-    let topTrack 
-    let secondTrack 
-    let thirdTrack 
-    let fourthTrack 
-    let fifthTrack
+    let topTrack : any
+    let secondTrack : any
+    let thirdTrack : any
+    let fourthTrack : any
+    let fifthTrack : any
     
     useEffect(() => {
         const accessToken = localStorage.getItem('spotifyAccessToken')
@@ -36,7 +36,7 @@ const Tracks = () => {
 
     },[])
     // console.log(tracks);
-    if(tracks.length > 0 ){
+    if(tracks && tracks.length > 0 ){
         topTrack = [tracks[0]]
         secondTrack = [tracks[1]]
         thirdTrack = [tracks[2]]
@@ -51,7 +51,7 @@ const Tracks = () => {
     <section className='tracks_section'>
         
         {topTrack ? <div className='fav_track'>
-            <div className="info__details">
+            <div className="info__details info_section">
             <div className="icon"><FaItunesNote /></div>
             <div className="info_details">
                 <h1 className='info__details_h1'>Steady vibin to</h1>
@@ -59,10 +59,40 @@ const Tracks = () => {
                 <span className='info__details_span'>when it comes to songs {topTrack[0].name} always does it for you.</span>
             </div>
             </div>
-            
+            <div className="first_track">
+                <span className='position'>#1</span>
             <div className="img_track">
-                <Image src={topTrack[0].album.images[0].url} alt={topTrack[0].name} fill={true}/>
+                <Image src={topTrack[0].album.images[0].url} alt={topTrack[0].name} className='img__track' fill={true}/>
             </div>
+            <h3>{topTrack[0].name}</h3>
+
+            </div>
+            <div className="second_track">
+                <span className='pos'>#2</span>
+                <div className="img_track_all">
+                    <Image src={secondTrack[0].album.images[0].url} alt={secondTrack[0].name} fill={true} className='img__track'/>
+                </div>
+            </div>
+            <div className="third_track">
+                <span className='pos'>#3</span>
+                <div className="img_track_all">
+                    <Image src={thirdTrack[0].album.images[0].url} alt={thirdTrack[0].name} fill={true} className='img__track'/>
+                </div>
+            </div>
+            <div className="fourth_track">
+                <span className='pos'>#4</span>
+                <div className="img_track_all">
+                    <Image src={fourthTrack[0].album.images[0].url} alt={fourthTrack[0].name} fill={true} className='img__track'/>
+                </div>
+            </div>
+            <div className="fifth_track">
+                <span className='pos'>#2</span>
+                <div className="img_track_all">
+                    <Image src={fifthTrack[0].album.images[0].url} alt={fifthTrack[0].name} fill={true} className='img__track'/>
+                </div>
+            </div>
+            
+
         </div>:""}
        
     </section>
