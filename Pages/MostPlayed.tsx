@@ -57,6 +57,7 @@ const MostPlayed = () => {
         
     },[])
     useEffect(() => {
+        // fetching the user's favourite artist
         const accessToken = localStorage.getItem('spotifyAccessToken')
         fetch('https://api.spotify.com/v1/me/top/artists?time_range=short_term', {
             headers: {
@@ -65,8 +66,8 @@ const MostPlayed = () => {
         })
         .then(resp => resp.json())
         .then((resp) => {
-            // console.log(resp); 
-            setArtist(resp.items)  
+            console.log(resp); 
+            setArtist(resp)  
         
         }).catch((error: any) => {
             console.error("error fetching user's favorite artist", error)
@@ -178,10 +179,10 @@ const MostPlayed = () => {
         {/* <div className="info_artist"><span>#4</span><h3>{fourthArtist[0].name}</h3></div> */}
             {fourthArtist && fourthArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#4</span><h3>{fourthArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={fourthArtist[0].images[0].url} alt={fourthArtist[0].name} /></div> : ""} 
         </div>
-        <div className="fifth_artist artist" ref={fifthimgRef}>
-        {/* <div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div> */}
+        {/* <div className="fifth_artist artist" ref={fifthimgRef}>
+        <div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div>
             {fifthArtist && fifthArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={fifthArtist[0].images[0].url} alt={fifthArtist[0].name} /></div> : ""}
-        </div>
+        </div> */}
         
        </div>
        <Tracks/>

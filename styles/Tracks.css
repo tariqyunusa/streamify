@@ -75,3 +75,38 @@
     color: #fff;
     opacity: 50%;
 }
+.first_artist_all{
+    position: relative;
+}
+.artist__info_first{
+    position: absolute;
+    top: 16rem;
+    padding: 1rem;
+}
+.artist__info_first h5{
+    color: #fff;
+    font-size: 1.2rem;
+}
+.artist__info_first h6{
+    color: #1DB954;
+    font-size: 1rem;
+    padding: .2rem 0;
+}
+.artist_info_first h5{
+    color: #fff;
+    font-size: 1.2rem;
+}
+.artist_info_first h6{
+    color: #1DB954;
+    font-size: 1rem;
+}
+.audio_preview{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #d7d7d7;
+    z-index: 9999;
+    position: absolute;
+    top: 17rem;
+    left: 17rem;
+}
