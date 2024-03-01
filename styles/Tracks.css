@@ -104,9 +104,15 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: #d7d7d7;
+    background-color: #272727;
     z-index: 9999;
     position: absolute;
     top: 17rem;
     left: 17rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1DB954;
+    font-size: 1rem;
+    cursor: pointer;
 }

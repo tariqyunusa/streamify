@@ -4,13 +4,16 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import "../styles/Tracks.css"
 import { FaItunesNote } from "react-icons/fa6";
-import { log } from 'console'
+
+import { IoPlay } from "react-icons/io5";
+import { IoIosPause } from "react-icons/io";
 
 interface Track{
     
 }
 const Tracks = () => {
     const [tracks, setTracks] = useState<any>([])
+    const [isPlaying, setIsPlaying] = useState(false)
     let topTrack : any
     let secondTrack : any
     let thirdTrack : any
@@ -47,8 +50,10 @@ const Tracks = () => {
     const playPreview = (previewUrl: string) => {
        const audio = new  Audio(previewUrl)
        audio.play()
+       setIsPlaying(true)
         
     }
+   
     
      
     
@@ -70,7 +75,7 @@ const Tracks = () => {
             <div className="first_artist_all">
             <div className="img_track">
                 <div className="audio_preview" onMouseEnter={() => playPreview(topTrack[0].preview_url)}>
-
+               {isPlaying ? <IoIosPause /> : <IoPlay/> }
                 </div>
                 <Image src={topTrack[0].album.images[0].url} alt={topTrack[0].name} className='img__track' fill={true}/>
             </div>
