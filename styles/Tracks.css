@@ -6,7 +6,7 @@
 .tracks_section{
     width: 200vw;
     display: flex;
-    height: 100vh;
+    height: 100%;
     align-items: center;
     margin-inline-start: 4rem ;
 }
