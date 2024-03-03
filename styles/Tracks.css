@@ -95,10 +95,13 @@
 .artist_info_first h5{
     color: #fff;
     font-size: 1.2rem;
+    margin: .3rem 0
 }
 .artist_info_first h6{
     color: #1DB954;
     font-size: 1rem;
+   
+    
 }
 .audio_preview{
     width: 35px;

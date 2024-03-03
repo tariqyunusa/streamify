@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { FaHeadphones } from "react-icons/fa";
 import gsap from 'gsap'
 import Tracks from '@/components/Tracks'
+import { log } from 'console'
 
 interface SpotifyArtist {
     external_urls: { spotify: string };
@@ -32,11 +33,11 @@ const MostPlayed = () => {
     const thirdimgRef = useRef(null)
     const fourthimgRef = useRef(null)
     const fifthimgRef = useRef(null)
-    let favArtist : any = []
-    let secondArtist : any = []
-    let thirdArtist : any = []
-    let fourthArtist : any = []
-    let fifthArtist : any = []
+    let favArtist : any 
+    let secondArtist : any 
+    let thirdArtist : any 
+    let fourthArtist : any
+    let fifthArtist : any 
     
     useEffect(()=>{
         // fetching the current user's personal data
@@ -49,7 +50,7 @@ const MostPlayed = () => {
         .then(response => response.json())
         .then((response: any) => {
             setUser(response)
-            console.log(response);
+            // console.log(response);
             
         }).catch((error) => {
             console.error("error fetching person data", error)
@@ -59,15 +60,15 @@ const MostPlayed = () => {
     useEffect(() => {
         // fetching the user's favourite artist
         const accessToken = localStorage.getItem('spotifyAccessToken')
-        fetch('https://api.spotify.com/v1/me/top/artists?time_range=short_term', {
+        fetch('https://api.spotify.com/v1/me/top/artists?time_range=medium_term', {
             headers: {
                 Authorization : `Bearer ${accessToken}`
             }
         })
         .then(resp => resp.json())
         .then((resp) => {
-            console.log(resp); 
-            setArtist(resp)  
+            // console.log(resp.items); 
+            setArtist(resp.items)  
         
         }).catch((error: any) => {
             console.error("error fetching user's favorite artist", error)
@@ -78,7 +79,6 @@ const MostPlayed = () => {
     const username = user
     
    
-    
     if(artist && artist.length > 0){
         favArtist = [artist[0]]
         secondArtist = [artist[1]]
@@ -86,7 +86,7 @@ const MostPlayed = () => {
         fourthArtist = [artist[3]]
         fifthArtist = [artist[4]]
        // console.log("Your favourite artist is:", favArtist[0]);
-      console.log(secondArtist, thirdArtist, fourthArtist, fifthArtist);  
+    //   console.log("your favs:",secondArtist, thirdArtist, fourthArtist, fifthArtist);   
     }
  
     
@@ -144,6 +144,7 @@ const MostPlayed = () => {
             }
         )
     },[imgRef, secondimgRef, thirdimgRef, fourthimgRef, fifthimgRef])
+   console.log("your favourite artist", favArtist);
    
     
   return (

@@ -30,7 +30,7 @@ const Tracks = () => {
             }
         }).then(resp => resp.json())
         .then((resp : any) => {
-            console.log("top tracks", resp.items);
+            // console.log("top tracks", resp.items);
             setTracks(resp.items)
             
         })
@@ -51,7 +51,14 @@ const Tracks = () => {
        const audio = new  Audio(previewUrl)
        audio.play()
        setIsPlaying(true)
+       console.log("now playing:", topTrack[0].name);
+       
         
+    }
+    const pausePreview = (previewUrl: string) => {
+        const audio = new Audio(previewUrl)
+        audio.pause()
+        setIsPlaying(false)
     }
    
     
@@ -74,7 +81,7 @@ const Tracks = () => {
                 <span className='position'>#1</span>
             <div className="first_artist_all">
             <div className="img_track">
-                <div className="audio_preview" onMouseEnter={() => playPreview(topTrack[0].preview_url)}>
+                <div className="audio_preview" onMouseEnter={() => playPreview(topTrack[0].preview_url)} onMouseLeave={() => pausePreview(topTrack[0].preview_url)}>
                {isPlaying ? <IoIosPause /> : <IoPlay/> }
                 </div>
                 <Image src={topTrack[0].album.images[0].url} alt={topTrack[0].name} className='img__track' fill={true}/>
