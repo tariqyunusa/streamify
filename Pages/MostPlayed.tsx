@@ -8,6 +8,8 @@ import { FaHeadphones } from "react-icons/fa";
 import gsap from 'gsap'
 import Tracks from '@/components/Tracks'
 import { log } from 'console'
+import Artists from '@/components/Artist'
+import Loader from '@/components/Loader'
 
 interface SpotifyArtist {
     external_urls: { spotify: string };
@@ -20,6 +22,10 @@ interface SpotifyArtist {
     popularity: number;
     type: string;
     uri: string;
+  }
+  interface artist{
+    artistImg: string,
+    artistName: string
   }
 
 
@@ -144,51 +150,13 @@ const MostPlayed = () => {
             }
         )
     },[imgRef, secondimgRef, thirdimgRef, fourthimgRef, fifthimgRef])
-   console.log("your favourite artist", favArtist);
+//    console.log("your favourite artist", favArtist);
    
     
   return (
-   <section className='most_listened'>
-    <div className="navigation"><SecondNav username={username} /></div>
-    <main className='user_behaviour'>
-       <div className="info__intro">
-        {favArtist && favArtist.length > 0 ? <div className='artist_conatainer'>
-            <div className="icon"><FaHeadphones /></div>
-            <div className="info__details">
-            <h1 className='info__details_h1'>Jamming with</h1>
-            <h2 className='info__details_h2'>{favArtist[0].name}</h2>
-            <span className='info__details_span'>No Contest – {favArtist[0].name} Reigns Supreme in Your<br/> Favorite Artist Hierarchy.</span>
-            </div>
-        </div>: ""}
-       </div>
-       <div className="artist__container_auto">
-       <div className="first_artist artist" ref={imgRef}>
-        <div className="info__artist_rank_name">
-            {favArtist && favArtist.length > 0 ? <div><div className="artist_about"><span className='fav__artist'>your favorite artist</span><h3 className='fav_artist_h3'>{favArtist[0].name}</h3></div>
-            <h3>{favArtist[0].name}</h3> </div>: ""}
-        </div>
-        {favArtist && favArtist.length > 0 ? <Image className='first_artist artist_img' src={favArtist[0].images[0].url} fill={true} alt={favArtist[0].name}/> : ""}</div>
-        <div className="second_artist artist" ref={secondimgRef} >
-       
-            {secondArtist && secondArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#2</span><h3>{secondArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={secondArtist[0].images[0].url} alt={secondArtist[0].name} /></div> : "" }
-        </div>
-        <div className="third_artist artist" ref={thirdimgRef} >
-        {/* <div className="info_artist"><span>#3</span><h3>{thirdArtist[0].name}</h3></div> */}
-            {thirdArtist && thirdArtist.length >0 ? <div className="card"><div className="info_artist"><span>#3</span><h3>{thirdArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={thirdArtist[0].images[0].url} alt={thirdArtist[0].name} /></div>: ""}
-        </div>
-        <div className="fourth_artist artist" ref={fourthimgRef}>
-        {/* <div className="info_artist"><span>#4</span><h3>{fourthArtist[0].name}</h3></div> */}
-            {fourthArtist && fourthArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#4</span><h3>{fourthArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={fourthArtist[0].images[0].url} alt={fourthArtist[0].name} /></div> : ""} 
-        </div>
-        {/* <div className="fifth_artist artist" ref={fifthimgRef}>
-        <div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div>
-            {fifthArtist && fifthArtist.length > 0 ? <div className="card"><div className="info_artist"><span>#5</span><h3>{fifthArtist[0].name}</h3></div><Image className='artist_img' fill={true} src={fifthArtist[0].images[0].url} alt={fifthArtist[0].name} /></div> : ""}
-        </div> */}
-        
-       </div>
-       <Tracks/>
-    </main>
-    
+   <section>
+    <Artists />
+ 
    </section>
   )
 }
