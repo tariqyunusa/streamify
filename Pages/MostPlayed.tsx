@@ -163,7 +163,7 @@ const MostPlayed = () => {
        </div>
        <div className="artist__container_auto">
        <div className="first_artist artist" ref={imgRef}>
-        <div className="info__artist_rank_name">
+        <div className="info__artist_rank_name ">
             {favArtist && favArtist.length > 0 ? <div><div className="artist_about"><span className='fav__artist'>your favorite artist</span><h3 className='fav_artist_h3'>{favArtist[0].name}</h3></div>
             <h3>{favArtist[0].name}</h3> </div>: ""}
         </div>

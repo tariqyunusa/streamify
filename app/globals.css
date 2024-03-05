@@ -8,3 +8,6 @@ html,body{
     background-color: #111111;
     font-family: Work Sans;
 }
+a{
+    text-decoration: none;
+}

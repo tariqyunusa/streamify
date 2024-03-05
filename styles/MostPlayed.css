@@ -89,39 +89,39 @@ html,body{
     /* left: -3rem; */
 }
 .first_artist {
+    width: 18rem;
+    height: 18rem;
     position: relative;
-    top: 4rem;
-    width: 16rem;
-    height: 20rem;
+    top: 4rem
     /* margin: 1rem; */
 }
 .second_artist{
     position: relative;
-    top: 2rem;
+    
     /* left: 2rem; */
-    width: 12rem;
-    height: 12rem;
+    width: 15rem;
+    height: 15rem;
     /* margin: 1rem; */
 }
 .third_artist{
     position: relative;
     /* margin: 1rem; */
-    top: 20rem;
-    width: 12rem;
-    height: 12rem;
+    top: 18rem;
+    width: 15rem;
+    height: 15rem;
 }
 .fourth_artist{
     position: relative;
     /* margin: 1rem; */
-    top:10rem ;
-    width: 12rem;
-    height: 12rem;
+    top:5rem ;
+    width: 15rem;
+    height: 15rem;
 }
 .fifth_artist{
     position: relative;
     top: 4rem;
-    width: 12rem;
-    height: 12rem;
+    width: 15rem;
+    height: 15rem;
     /* margin: 1rem; */
 }
 .artist_img{
