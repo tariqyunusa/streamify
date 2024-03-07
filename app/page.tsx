@@ -5,7 +5,7 @@ import Image from "next/image"
 import Nav from '@/components/Nav'
 import SpotifyPlaylist from "@/components/SpotifyPlaylist"
 import Link from "next/link"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 
 
 export default function Home() {
